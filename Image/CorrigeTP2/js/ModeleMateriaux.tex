@@ -1,0 +1,62 @@
+\documentclass[a4paper]{article}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{color}
+\usepackage{alltt}
+\usepackage{times}
+\setlength{\fboxsep}{0pt}
+\newcommand{\scitea}[1]{\noindent{\ttfamily{\textcolor[rgb]{0.5, 0.5, 0.5}{\colorbox[rgb]{1.0, 1.0, 1.0}{#1}}}}}
+\newcommand{\scitec}[1]{\noindent{\ttfamily{\textcolor[rgb]{0.0, 0.5, 0.0}{\colorbox[rgb]{1.0, 1.0, 1.0}{#1}}}}}
+\newcommand{\scitef}[1]{\noindent{\ttfamily{\textbf{\textcolor[rgb]{0.0, 0.0, 0.5}{\colorbox[rgb]{1.0, 1.0, 1.0}{#1}}}}}}
+\newcommand{\scitek}[1]{\noindent{\ttfamily{\textbf{\textcolor[rgb]{0.0, 0.0, 0.0}{\colorbox[rgb]{1.0, 1.0, 1.0}{#1}}}}}}
+\newcommand{\scitel}[1]{\noindent{\ttfamily{\textcolor[rgb]{0.0, 0.0, 0.0}{\colorbox[rgb]{1.0, 1.0, 1.0}{#1}}}}}
+\newcommand{\sciteib}[1]{\noindent{\ttfamily{\textcolor[rgb]{0.0, 0.0, 0.0}{\colorbox[rgb]{1.0, 1.0, 1.0}{#1}}}}}
+\begin{document}
+
+Source File: ModeleMateriaux.js
+
+\noindent
+\small{
+\scitec{// primitive avec Phong} \\
+\scitef{function}\scitea{ }\scitel{surfPhong}\scitek{(}\scitel{geom}\scitek{,}\scitel{coulD}\scitek{,}\scitel{transpa}\scitek{,}\scitel{bolTrans}\scitek{,}\scitel{coulSpe}\scitek{)\{}\scitea{ } \\
+\scitea{ }\scitel{let}\scitea{ }\scitel{Material}\scitea{ }\scitek{=}\scitea{ }\scitef{new}\scitea{ }\scitel{THREE}\scitek{.}\scitel{MeshPhongMaterial}\scitek{(\{}\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }\scitel{color}\scitek{:}\scitea{ }\scitel{coulD}\scitek{,}\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }\scitel{opacity}\scitek{:}\scitea{ }\scitel{transpa}\scitek{,}\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }\scitel{transparent}\scitek{:}\scitea{ }\scitel{bolTrans}\scitek{,}\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }\scitec{//{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}} wireframe: false,} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }\scitel{specular}\scitek{:}\scitel{coulSpe}\scitek{,}\scitea{ } \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }\scitel{flatShading}\scitek{:}\scitea{ }\scitel{true}\scitek{,}\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }\scitel{side}\scitek{:}\scitea{ }\scitel{THREE}\scitek{.}\scitel{DoubleSide}\scitek{,}\scitea{} \\
+\scitea{ }\scitek{\});}\scitea{} \\
+\scitea{ }\scitel{let}\scitea{ }\scitel{maillage}\scitea{ }\scitek{=}\scitea{ }\scitef{new}\scitea{ }\scitel{THREE}\scitek{.}\scitel{Mesh}\scitek{(}\scitel{geom}\scitek{,}\scitel{Material}\scitek{);}\scitea{} \\
+\scitea{ }\scitef{return}\scitea{ }\scitel{maillage}\scitek{;}\scitea{} \\
+\scitek{\}}\scitec{//fin fonction surfPhong} \\
+\scitea{} \\
+\scitec{//insensible a la lumiere} \\
+\scitef{function}\scitea{ }\scitel{surfMateriauBasic}\scitek{(}\scitel{geom}\scitek{,}\scitel{coul}\scitek{)\{}\scitea{} \\
+\scitea{ }\scitel{let}\scitea{ }\scitel{Materiau}\scitea{ }\scitek{=}\scitea{ }\scitef{new}\scitea{ }\scitel{THREE}\scitek{.}\scitel{MeshBasicMaterial}\scitek{(\{}\scitel{color}\scitek{:}\scitea{ }\scitel{coul}\scitek{\});}\scitea{} \\
+\scitea{ }\scitel{let}\scitea{ }\scitel{maillage}\scitea{ }\scitek{=}\scitea{ }\scitef{new}\scitea{ }\scitel{THREE}\scitek{.}\scitel{Mesh}\scitek{(}\scitel{geom}\scitek{,}\scitel{Materiau}\scitek{);}\scitea{} \\
+\scitea{ }\scitef{return}\scitea{ }\scitel{maillage}\scitek{;}\scitea{ } \\
+\scitek{\}}\scitea{ }\scitec{//fin fonction surfMateriauBasic} \\
+\scitea{} \\
+\scitec{//Gouraud} \\
+\scitef{function}\scitea{ }\scitel{surfGouraud}\scitek{(}\scitel{geom}\scitek{,}\scitel{coul}\scitek{)\{}\scitea{} \\
+\scitea{ }\scitel{let}\scitea{ }\scitel{Materiau}\scitea{ }\scitek{=}\scitea{ }\scitef{new}\scitea{ }\scitel{THREE}\scitek{.}\scitel{MeshLambertMaterial}\scitek{(\{}\scitel{color}\scitek{:}\scitea{ }\scitel{coul}\scitek{\});}\scitea{} \\
+\scitea{ }\scitel{let}\scitea{ }\scitel{maillage}\scitea{ }\scitek{=}\scitea{ }\scitef{new}\scitea{ }\scitel{THREE}\scitek{.}\scitel{Mesh}\scitek{(}\scitel{geom}\scitek{,}\scitel{Materiau}\scitek{);}\scitea{} \\
+\scitea{ }\scitef{return}\scitea{ }\scitel{maillage}\scitek{;}\scitea{ } \\
+\scitea{ } \\
+\scitek{\}}\scitec{// fin fonction surfGouraud} \\
+\scitea{} \\
+\scitea{{\hspace*{1em}} }\scitec{// primitive en fil de fer} \\
+\scitef{function}\scitea{ }\scitel{surfFilDeFer}\scitek{(}\scitel{ObjetGeometrique}\scitek{,}\scitel{coul}\scitek{,}\scitel{tailleFil}\scitek{)}\scitea{ }\scitek{\{}\scitea{} \\
+\scitea{ }\scitel{let}\scitea{ }\scitel{ProprieteFilDeFer}\scitea{ }\scitek{=}\scitea{ }\scitef{new}\scitea{ }\scitel{THREE}\scitek{.}\scitel{MeshBasicMaterial}\scitek{(\{}\scitea{} \\
+\scitea{{\hspace*{1em}} }\scitel{color}\scitek{:}\scitel{coul}\scitek{,}\scitea{} \\
+\scitea{{\hspace*{1em}} }\scitel{wireframeLinewidth}\scitek{:}\scitea{ }\scitel{tailleFil}\scitea{} \\
+\scitea{ }\scitek{\});}\scitea{} \\
+\scitea{ }\scitel{ProprieteFilDeFer}\scitek{.}\scitel{wireframe}\scitea{ }\scitek{=}\scitea{ }\scitel{true}\scitek{;}\scitea{} \\
+\scitea{ }\scitel{let}\scitea{ }\scitel{maillage}\scitea{ }\scitek{=}\scitea{ }\scitef{new}\scitea{ }\scitel{THREE}\scitek{.}\scitel{Mesh}\scitek{(}\scitel{ObjetGeometrique}\scitek{,}\scitea{ }\scitel{ProprieteFilDeFer}\scitek{);}\scitea{} \\
+\scitea{ }\scitef{return}\scitea{ }\scitel{maillage}\scitek{;}\scitea{} \\
+\scitea{ }\scitek{\}}\scitec{// fin fonction surfFilDeFer}
+} %end small
+
+\end{document}

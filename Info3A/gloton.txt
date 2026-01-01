@@ -1,0 +1,20 @@
+def algo(L,m):
+    a=m
+    S=[]
+    prix=0
+    L.sort(key = lambda x: x[0], reverse=True)
+    for I in L:
+        if m > I[1]:
+            S.append(I)
+            m=m-I[1]
+            prix+=I[0]*I[1]
+        elif m>0 and m <I[1]:
+            #I[1]=m
+            I = (I[0],m)
+            prix+=I[0]*I[1]
+            m = m - m
+            S.append(I)
+    
+    return S, prix , a
+print(algo([(1,4),(7,15),(5,2),(4,9),(3,16),(2,5)], 34))
+            
