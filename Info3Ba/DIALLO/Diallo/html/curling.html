@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+
+<head>
+  <meta  charset="utf-8">
+  <meta name="author" content="Aissatou Bobo" >
+  <meta name="copyright" content="Diallo">
+  <title>Mène d'une partie de curling</title>
+  <script src="../libs/three/three.js"></script>
+  <script src="../libs/three/controls/TrackballControls.js"></script>
+  
+  <script src="../libs/util/dat.gui.js"></script>
+  <script src="../libs/util/Stats.js"></script>
+  <script src="../libs/util/util.js"></script>
+  
+  <script src="../js/GeometrieUtile.js"></script>
+  <script src="../js/ModeleMateriaux.js"></script>
+  <script src="../js/CameraLumiere.js"></script>
+  
+  <script src="../js/PierreCurling.js"></script>
+  <script src="../js/Trajectoire.js"></script>
+  <script src="../js/Balai.js"></script>
+  <script src="../js/curling.js"></script>
+  
+  
+  
+  <!-- css principal du projet Curling -->
+   
+  <link rel="stylesheet" href="../css/curling.css"> 
+</head>
+
+
+<body onload="init()">
+  <div id="webgl"></div>
+
+  <div id="container-tables">
+
+  <!-- Formulaire caméra -->
+  <form id="controle" action="mailto:toto@wanadoo.fr" method="post">
+    <fieldset>
+      <legend>Contrôle de la camera et affichage du repère</legend>
+      <div>
+        <table id="TableauCamera">
+          <tr>
+            <th>Géométrie</th>
+            <th>Abscisse</th>
+            <th>Ordonnée</th>
+            <th>Cote</th>
+          </tr>
+          <tr>
+            <td>Position</td>
+            <td><input type="number" id="PosX"  name="PosX" min="-20" max="20" step="0.25" value="20" /></td>
+            <td><input type="number" id="PosY"  name="PosY" min="-20" max="20" step="0.25" value="-12" /></td>
+            <td><input type="number" id="PosZ"  name="PosZ" min="-20" max="20" step="0.25" value="2" /></td>
+          </tr>
+          <tr>
+            <td>Direction</td>
+            <td><input type="number" id="DirX"  name="DirX" min="-20" max="20" step="0.25" value="0" /></td>
+            <td><input type="number" id="DirY"  name="DirY" min="-20" max="20" step="0.25" value="0" /></td>
+            <td><input type="number" id="DirZ"  name="DirZ" min="-20" max="20" step="0.25" value="0.5" /></td>
+          </tr>
+        </table>          
+      </div>
+    </fieldset>
+  </form>
+
+  <!-- Tableau du score -->
+  <div>
+    <h2>Score de la mène</h2>
+    <table id="scoreTable" border="1">
+      <thead>
+        <tr>
+          <th>Lancer n°</th>
+          <th>Score rouge</th>
+          <th>Score bleu</th>
+          <th>Équipe qui mène</th>
+        </tr>
+      </thead>
+      <tbody id="scoreBody"></tbody>
+    </table>
+    <p id="finalResult" class="resume-final"></p>
+
+  </div>
+
+</div>
+  
+</body>
+
+</html>
