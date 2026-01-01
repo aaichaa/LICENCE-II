@@ -1,0 +1,170 @@
+CREATE SCHEMA sds;
+
+ create table sds.client(
+	id integer primary key,
+	nom text,
+	prenom text
+);
+
+create table  sds.abonnement(
+id integer primary key,niveau text, date_debut Date, date_fin Date, prix integer,client_id integer references sds.client(id) );
+
+ create table sds.Type_machine(id integer primary key, nom text,intervalle_revision integer);
+
+ create table sds.Machine(id integer primary key, nom text,type_machine_id integer references sds.Type_machine(id));
+
+ create table sds.Maintenance(id integer primary key, date_maintenance Date,machine_id integer references sds.machine(id));
+
+create table sds.prestation(id integer primary key,type_prestation text);
+
+
+CREATE TABLE sds.coach (
+    id       INTEGER PRIMARY KEY,
+    nom      TEXT,
+    prenom   TEXT
+);
+
+CREATE TABLE sds.seance_specialisee (
+    id           INTEGER PRIMARY KEY,
+    id_coach     INTEGER,
+    date_seance  DATE,
+    theme        TEXT,
+    duree        INTEGER,
+    FOREIGN KEY (id_coach) REFERENCES sds.coach(id)
+);
+
+CREATE TABLE sds.abonnement_prestation (
+    id_abonnement INTEGER,
+    id_prestation INTEGER,
+    PRIMARY KEY (id_abonnement, id_prestation),
+    FOREIGN KEY (id_abonnement) REFERENCES sds.abonnement(id),
+    FOREIGN KEY (id_prestation) REFERENCES sds.prestation(id)
+);
+
+
+CREATE TABLE sds.inscription_seance_specialisee (
+    client_id              INTEGER,
+    seance_specialisee_id  INTEGER,
+    date_inscription       DATE,
+    date_paiement          DATE,
+    montant                INTEGER,     -- si tu préfères TEXT, dis-moi !
+    
+    PRIMARY KEY (client_id, seance_specialisee_id),
+    
+    FOREIGN KEY (client_id)
+        REFERENCES sds.client(id),
+    
+    FOREIGN KEY (seance_specialisee_id)
+        REFERENCES sds.seance_specialisee(id)
+);
+CREATE TABLE sds.seance_coaching (
+    id               INTEGER PRIMARY KEY,
+    client_id        INTEGER,
+    coach_id         INTEGER,
+    date_seance      DATE,
+    duree            INTEGER,
+    date_inscription DATE,
+    date_paiement    DATE,
+    montant          INTEGER,
+
+    FOREIGN KEY (client_id)
+        REFERENCES sds.client(id),
+
+    FOREIGN KEY (coach_id)
+        REFERENCES sds.coach(id)
+);
+INSERT INTO sds.client (id, nom, prenom) VALUES
+(1, 'Diallo', 'Aissatou'),
+(2, 'Martin', 'Lucas'),
+(3, 'Dupont', 'Emma'),
+(4, 'Morel', 'Nina'),
+(5, 'Leroy', 'Sami');
+
+INSERT INTO sds.coach (id, nom, prenom) VALUES
+(1, 'Nguyen', 'Sophie'),
+(2, 'Bernard', 'Thomas'),
+(3, 'Rossi',  'Carla'),
+(4, 'Lopez',  'Hugo'),
+(5, 'Kim',    'Lea');
+
+INSERT INTO sds.prestation (id, type_prestation) VALUES
+(1, 'Acces libre au materiel'),
+(2, 'Seances specialisees'),
+(3, 'Coaching personnalise'),
+(4, 'Acces libre au materiel'),
+(5, 'Seances specialisees');
+
+INSERT INTO sds.abonnement
+(id, niveau, date_debut, date_fin, prix, client_id) VALUES
+(1, 'Basic',   '2025-01-01', '2025-03-31',  60, 1), -- Diallo
+(2, 'Premium', '2025-01-01', '2025-03-31', 120, 2), -- Lucas
+(3, 'Premium', '2025-01-01', '2025-03-31', 120, 4), -- Nina
+(4, 'Basic',   '2025-02-01', '2025-04-30',  60, 1), -- 2e abo Basic Diallo
+(5, 'Basic',   '2025-02-01', '2025-04-30',  60, 2); -- 2e abo Basic Lucas
+
+INSERT INTO sds.abonnement_prestation (id_abonnement, id_prestation) VALUES
+(1, 1),        -- Basic Diallo : materiel
+(2, 1), (2, 2), (2, 3),  -- Premium Lucas : materiel + seances + coaching
+(3, 1), (3, 2), (3, 3),  -- Premium Nina : materiel + seances + coaching
+(4, 1),        -- Basic Diallo : materiel
+(5, 1);        -- Basic Lucas : materiel
+
+INSERT INTO sds.type_machine (id, nom, intervalle_revision) VALUES
+(1, 'Tapis de course',    30),
+(2, 'Velo elliptique',    45),
+(3, 'Rameur',             60),
+(4, 'Presse a cuisses',   90),
+(5, 'Stepper',            30);
+
+INSERT INTO sds.machine (id, nom, type_machine_id) VALUES
+(1, 'Tapis #1',    1),
+(2, 'Tapis #2',    1),
+(3, 'Velo #1',     2),
+(4, 'Rameur #1',   3),
+(5, 'Stepper #1',  5);
+
+INSERT INTO sds.maintenance (id, machine_id, date_maintenance) VALUES
+(1, 1, '2025-01-10'), -- Tapis #1, intervalle 30 → prochaine ~ 2025-02-09
+(2, 2, '2024-12-20'), -- Tapis #2, intervalle 30 → prochaine ~ 2025-01-19
+(3, 3, '2024-12-25'), -- Velo #1, 45 j → ~ 2025-02-08
+(4, 4, '2024-11-15'), -- Rameur, 60 j → ~ 2025-01-14
+(5, 5, '2025-01-20'); -- Stepper, 30 j → ~ 2025-02-19
+
+INSERT INTO sds.seance_specialisee
+(id, date_seance, theme, duree, _idcoach) VALUES
+(1, '2025-02-01', 'Yoga',      60, 1),
+(2, '2025-02-03', 'Boxe',      45, 2),
+(3, '2025-02-05', 'Pilates',   50, 1),
+(4, '2025-02-10', 'Crossfit',  45, 3),
+(5, '2025-02-15', 'Zumba',     55, 2);
+
+INSERT INTO sds.inscription_seance_specialisee
+(client_id, seance_specialisee_id, date_inscription, date_paiement, montant) VALUES
+-- Client 1 (Diallo, Basic) : paie des seances en plus
+(1, 1, '2025-01-20', '2025-01-25', 10),
+(1, 2, '2025-01-22', '2025-01-28', 15),
+
+-- Client 2 (Lucas, Premium) : utilise bien les seances de son abo
+(2, 1, '2025-01-18', '2025-01-20',  0),
+(2, 2, '2025-01-21', '2025-01-23',  0),
+(2, 5, '2025-02-10','2025-02-11', 10),
+
+-- Client 3 (Emma, non abonnee) : paie tout plein pot (pour Q4)
+(3, 2, '2025-01-24', '2025-01-26', 30),
+(3, 4, '2025-01-30', '2025-02-01', 30);
+-- Client 4 (Nina, Premium) : aucune inscription ici → Q3
+-- Client 5 (Sami) : on peut en rajouter si besoin plus tard
+
+INSERT INTO sds.seance_coaching
+(id, client_id, coach_id, date_seance, duree,
+ date_inscription, date_paiement, montant) VALUES
+-- Lucas (client 2, Premium)
+(1, 2, 1, '2025-02-02', 60, '2025-01-25', '2025-01-28',  0),  -- inclus
+(2, 2, 2, '2025-02-04', 45, '2025-01-26', '2025-01-29', 20),  -- supplement
+
+-- Emma (client 3, non abonnee) : paie cher → Q4
+(3, 3, 1, '2025-02-06', 60, '2025-01-28', '2025-02-01', 40),
+(4, 3, 3, '2025-02-08', 45, '2025-01-29', '2025-02-02', 50),
+
+-- Diallo (client 1, Basic) : coaching payant
+(5, 1, 2, '2025-02-09', 60, '2025-01-30', '2025-02-03', 25);

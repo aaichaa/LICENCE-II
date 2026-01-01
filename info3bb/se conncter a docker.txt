@@ -1,0 +1,191 @@
+docker exec -it postgres-db psql -U postgres
+
+
+
+
+
+
+
+
+
+
+
+
+commande pour trouver les identifiant de mon postgres => docker inspect postgres-db --format "{{json .Config.Env}}"
+
+
+javac -cp ".;postgresql-42.7.3.jar" ConnexionPostgres_fixed.java
+java -cp ".;postgresql-42.7.3.jar" ConnexionPostgres_fixed
+
+
+en local
+    // ======== Configuration connexion ========
+    // Remplacer selon votre configuration
+    private static final String URL = "jdbc:postgresql://localhost:5432/postgres"; 
+    private static final String USER = "postgres";                              
+    private static final String PASSWORD = "Aissatou";     
+
+
+
+
+C:\Users\BOBO>docker exec -it postgres-db psql -U postgres
+psql (18.0 (Debian 18.0-1.pgdg12+3))
+Type "help" for help.
+
+postgres=# select * from sds.inscription_seance_specialisee;
+ client_id | seance_specialisee_id | date_inscription | date_paiement | montant
+-----------+-----------------------+------------------+---------------+---------
+         1 |                     1 | 2025-01-20       | 2025-01-25    |      10
+         1 |                     2 | 2025-01-22       | 2025-01-28    |      15
+         2 |                     1 | 2025-01-18       | 2025-01-20    |       0
+         2 |                     2 | 2025-01-21       | 2025-01-23    |       0
+         2 |                     5 | 2025-02-10       | 2025-02-11    |      10
+         3 |                     2 | 2025-01-24       | 2025-01-26    |      30
+         3 |                     4 | 2025-01-30       | 2025-02-01    |      30
+         6 |                     1 | 2025-01-05       | 2025-01-05    |      25
+         6 |                     2 | 2025-01-10       | 2025-01-10    |      25
+         6 |                     3 | 2025-01-15       | 2025-01-15    |      25
+         7 |                     1 | 2025-01-12       | 2025-01-12    |      40
+         7 |                     4 | 2025-01-20       | 2025-01-20    |      40
+(12 rows)
+
+postgres=# exit
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug postgres-db
+    Learn more at https://docs.docker.com/go/debug-cli/
+
+C:\Users\BOBO>
+
+C:\Users\BOBO>docker inspect postgres-db --format "{{json .Config.Env}}"
+["POSTGRES_USER=postgres","POSTGRES_PASSWORD=Aissatou","POSTGRES_DB=appdb","PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/18/bin","GOSU_VERSION=1.19","LANG=en_US.utf8","PG_MAJOR=18","PG_VERSION=18.0-1.pgdg12+3","PGDATA=/var/lib/postgresql/18/docker"]
+
+C:\Users\BOBO>psql -h kafka.iem -U ad057513 ad057513
+'psql' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+
+C:\Users\BOBO>ssh ad057513@MI103-11
+ssh: connect to host mi103-11 port 22: Connection timed out
+
+C:\Users\BOBO>ssh ad057513@aragon
+*******************************************************************************
+ infoIEM-UFR Sciences et Techniques
+ https://depinfo.u-bourgogne.fr/infoiem/
+
+L'acces a cette machine implique l'engagement de respect de la Charte du
+ Bon Usage des Ressources Informatiques de l'Universite de Bourgogne
+*******************************************************************************
+
+RAPPEL: le pret de son compte ou de son mot de passe est prohibe
+
+
+AVERTISSEMENT
+Tout acces non autorise a ce serveur vous expose a des poursuites.
+Le vol de donnees, la corruption de donnees ou l'acces frauduleux a ce serveur par des tentatives d'injection de codes, de scripts malveillants ou par le biais de requetes envoyees au serveur fera objet d un depot de plainte systematique par l Universite de Bourgogne et pourra aboutir a des peines de prison de 3 a 5 ans et des amendes de 45000 a 75000 euros.
+(Art. 323.1, 323.2, 323.3 et 323.4 du Code Penal)
+ad057513@aragon's password:
+Permission denied, please try again.
+ad057513@aragon's password:
+Linux aragon 6.1.0-40-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.153-1 (2025-09-20) x86_64
+
+Debian GNU/Linux 12 \n \l
+
+
+██╗███╗   ██╗███████╗ ██████╗     ██╗███████╗███╗   ███╗
+██║████╗  ██║██╔════╝██╔═══██╗    ██║██╔════╝████╗ ████║
+██║██╔██╗ ██║█████╗  ██║   ██║    ██║█████╗  ██╔████╔██║
+██║██║╚██╗██║██╔══╝  ██║   ██║    ██║██╔══╝  ██║╚██╔╝██║
+██║██║ ╚████║██║     ╚██████╔╝    ██║███████╗██║ ╚═╝ ██║
+╚═╝╚═╝  ╚═══╝╚═╝      ╚═════╝     ╚═╝╚══════╝╚═╝     ╚═╝
+
+
+Last login: Wed Nov 19 16:31:29 2025 from 172.31.19.162
+ad057513@aragon:~$ psql -h kafka.iem -U ad057513 ad057513
+-bash: psql : commande introuvable
+ad057513@aragon:~$ exit
+déconnexion
+Connection to aragon closed.
+
+C:\Users\BOBO>ssh ad057513@172.31.18.97
+ssh: connect to host 172.31.18.97 port 22: Connection timed out
+
+C:\Users\BOBO>ping 172.31.18.97
+
+Envoi d’une requête 'Ping'  172.31.18.97 avec 32 octets de données :
+Délai d’attente de la demande dépassé.
+
+Statistiques Ping pour 172.31.18.97:
+    Paquets : envoyés = 1, reçus = 0, perdus = 1 (perte 100%),
+Ctrl+C
+^C
+C:\Users\BOBO>ping aragon
+
+Envoi d’une requête 'ping' sur aragon.iem [172.31.18.9] avec 32 octets de données :
+Réponse de 172.31.18.9 : octets=32 temps=19 ms TTL=63
+Réponse de 172.31.18.9 : octets=32 temps=19 ms TTL=63
+Réponse de 172.31.18.9 : octets=32 temps=25 ms TTL=63
+Réponse de 172.31.18.9 : octets=32 temps=19 ms TTL=63
+
+Statistiques Ping pour 172.31.18.9:
+    Paquets : envoyés = 4, reçus = 4, perdus = 0 (perte 0%),
+Durée approximative des boucles en millisecondes :
+    Minimum = 19ms, Maximum = 25ms, Moyenne = 20ms
+
+C:\Users\BOBO>
+
+C:\Users\BOBO>ping MI117-08
+
+Envoi d’une requête 'ping' sur MI117-08.iem [172.31.18.97] avec 32 octets de données :
+Délai d’attente de la demande dépassé.
+
+Statistiques Ping pour 172.31.18.97:
+    Paquets : envoyés = 1, reçus = 0, perdus = 1 (perte 100%),
+Ctrl+C
+^C
+C:\Users\BOBO>ping MI104-10
+
+Envoi d’une requête 'ping' sur MI104-10.iem [172.31.18.39] avec 32 octets de données :
+Réponse de 172.31.18.39 : octets=32 temps=18 ms TTL=63
+Réponse de 172.31.18.39 : octets=32 temps=20 ms TTL=63
+Réponse de 172.31.18.39 : octets=32 temps=20 ms TTL=63
+Réponse de 172.31.18.39 : octets=32 temps=19 ms TTL=63
+
+Statistiques Ping pour 172.31.18.39:
+    Paquets : envoyés = 4, reçus = 4, perdus = 0 (perte 0%),
+Durée approximative des boucles en millisecondes :
+    Minimum = 18ms, Maximum = 20ms, Moyenne = 19ms
+
+C:\Users\BOBO>ssh ad057513@MI104-10
+The authenticity of host 'mi104-10 (172.31.18.39)' can't be established.
+ED25519 key fingerprint is SHA256:qbEyU+rq7pD68JpkGzSHsc5xtgffF9IPbvZ9DEuwA8g.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'mi104-10' (ED25519) to the list of known hosts.
+ad057513@mi104-10's password:
+Linux MI104-10 6.1.0-38-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.147-1 (2025-08-02) x86_64
+
+Debian GNU/Linux 12 \n \l
+
+
+Une mise à jour de micrologiciel est disponible pour 1 appareil.
+Exécutez «fwupdmgr get-upgrades» pour plus d'informations.
+
+
+██╗███╗   ██╗███████╗ ██████╗     ██╗███████╗███╗   ███╗
+██║████╗  ██║██╔════╝██╔═══██╗    ██║██╔════╝████╗ ████║
+██║██╔██╗ ██║█████╗  ██║   ██║    ██║█████╗  ██╔████╔██║
+██║██║╚██╗██║██╔══╝  ██║   ██║    ██║██╔══╝  ██║╚██╔╝██║
+██║██║ ╚████║██║     ╚██████╔╝    ██║███████╗██║ ╚═╝ ██║
+╚═╝╚═╝  ╚═══╝╚═╝      ╚═════╝     ╚═╝╚══════╝╚═╝     ╚═╝
+
+
+
+Une mise à jour de micrologiciel est disponible pour 1 appareil.
+Exécutez «fwupdmgr get-upgrades» pour plus d'informations.
+
+Last login: Fri Dec 12 22:58:09 2025 from 172.31.19.154
+ad057513@MI104-10:~$ psql -h kafka.iem -U ad057513 ad057513
+Mot de passe pour l'utilisateur ad057513 :
+psql (16.10 (Debian 16.10-1.pgdg12+1), serveur 16.7 (Debian 16.7-1.pgdg120+1))
+Connexion SSL (protocole : TLSv1.3, chiffrement : TLS_AES_256_GCM_SHA384, compression : désactivé)
+Saisissez « help » pour l'aide.
