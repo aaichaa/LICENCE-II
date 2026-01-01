@@ -1,0 +1,76 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.43.1.0
+Copyright (C) 2025 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Diallo Aissatou Bobo, university, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.43.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.43.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      UL2CM3.DLL V1.164.16.0
+Dialog DLL:      TCM.DLL V1.56.6.0
+ 
+<h2>Project:</h2>
+C:\Users\BOBO\Documents\UNI-BOURGOGNE\LICENCE 2\Semestre1\Arm\dre.uvprojx
+Project File Date:  11/14/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin'
+Build target 'Target_1'
+compiling startup_ARMCM3.c...
+C:\Keil_v5\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm3.h(28): warning:  #2803-D: unrecognized GCC pragma
+    #pragma GCC diagnostic ignored "-Wpedantic"   /* disable pedantic warning due to unnamed structs/unions */
+C:\Keil_v5\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_gcc.h(29): error:  #5: cannot open source input file "arm_acle.h": No such file or directory
+  #include <arm_acle.h>
+RTE/Device/ARMCM3/startup_ARMCM3.c: 1 warning, 1 error
+compiling system_ARMCM3.c...
+C:\Keil_v5\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm3.h(28): warning:  #2803-D: unrecognized GCC pragma
+    #pragma GCC diagnostic ignored "-Wpedantic"   /* disable pedantic warning due to unnamed structs/unions */
+C:\Keil_v5\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_gcc.h(29): error:  #5: cannot open source input file "arm_acle.h": No such file or directory
+  #include <arm_acle.h>
+RTE/Device/ARMCM3/system_ARMCM3.c: 1 warning, 1 error
+assembling exo1.s...
+".\Objects\dre.axf" - 2 Error(s), 2 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.2.0.pack
+                ARM::CMSIS@6.2.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.1.1
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.Cortex_DFP.1.1.0.pack
+                ARM::Cortex_DFP@1.1.0
+                ARM Cortex Reference Subsystems Device Family Pack
+   * Component: Startup Variant: C Startup Version: 2.2.0
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Target_1
+  C:/Keil_v5/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include
+  C:/Keil_v5/Packs/ARM/Cortex_DFP/1.1.0/Device/ARMCM3/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@6.1.1
+
+   * Component: ARM::Device:Startup&C Startup@2.2.0
+      Include file:  Device/ARMCM3/Include/ARMCM3.h
+      Source file:   Device/ARMCM3/Source/startup_ARMCM3.c
+      Source file:   Device/ARMCM3/Source/system_ARMCM3.c
+Target not created.
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>

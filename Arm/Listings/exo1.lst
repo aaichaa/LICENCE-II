@@ -1,0 +1,51 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             Exemple, CODE, READONLY ; Décla
+                                                            re une zone de code
+                                                             en lecture seule
+    2 00000000                 ENTRY                        ; Point d'entrée du
+                                                             programme
+    3 00000000                 EXPORT           __main      ; Rendre la fonctio
+                                                            n visible
+    4 00000000         
+    5 00000000         __main
+    6 00000000 F04F 0005       MOV              r0, #5      ; Charger la valeur
+                                                             5 dans R0
+    7 00000004 F100 0007       ADD              r0, r0, #7  ; Ajouter 7 au regi
+                                                            stre R0
+    8 00000008         
+    9 00000008                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
+ork --depend=.\objects\exo1.d -o.\objects\exo1.o -I.\RTE\_Target_1 -IC:\Keil_v5
+\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include -IC:\Keil_v5\Packs\ARM\Cortex_DFP\1.1
+.0\Device\ARMCM3\Include --predefine="__EVAL SETA 1" --predefine="__UVISION_VER
+SION SETA 543" --predefine="ARMCM3 SETA 1" --predefine="_RTE_ SETA 1" --list=.\
+listings\exo1.lst exo1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Exemple 00000000
+
+Symbol: Exemple
+   Definitions
+      At line 1 in file exo1.s
+   Uses
+      None
+Comment: Exemple unused
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 5 in file exo1.s
+   Uses
+      At line 3 in file exo1.s
+Comment: __main used once
+2 symbols
+336 symbols in table
